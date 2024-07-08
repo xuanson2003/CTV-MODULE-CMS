@@ -1,0 +1,12 @@
+=> lan dau tien khi tao database
+add-migration InitDB -context ReadDomainDbContext 
+update-database -context ReadDomainDbContext
+
+=> lan tiep theo khi co sua doi database
+-migration UpdateDB_1 -context ReadDomainDbContext 
+update-database -context ReadDomainDbContext
+
+docker build -f "OcdServiceMono.API/Dockerfile" -t ocd-service-mono .
+docker load -i ocd-service-mono.tar
+docker save -o E:\docker-images\ocd-service-mono.tar ocd-service-mono
+docker run -d -p 8080:80 --name ocd-service-mono ocd-service-mono

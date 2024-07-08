@@ -1,6 +1,0 @@
-@CTV_MODULE_CMS_API_HostAddress = http://localhost:5097
-
-GET {{CTV_MODULE_CMS_API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
