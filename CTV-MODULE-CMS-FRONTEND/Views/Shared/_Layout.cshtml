@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CTV_MODULE_CMS_FRONTEND</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CTV_MODULE_CMS_FRONTEND.styles.css" asp-append-version="true" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+          integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/slide.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/introduction.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/service.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/partner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/news.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="header">
+        <div class="container header-container">
+            <div class="header-logo">
+                <a href="">QUACERT</a>
+            </div>
+
+            <div class="header-nav">
+                <div class="header-nav-links">
+                    <ul class="header-nav-links-list container">
+                        <li class="header-nav-link-item">
+                            <a href="">Giới thiệu</a>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">
+                                Dịch vụ
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </a>
+                            <ul class="header-nav-link-subItem">
+                                <li>
+                                    <a href="">Chứng nhận hệ thống quản lý</a>
+                                </li>
+                                <li><a href="">Chứng nhận sản phẩm hợp chuẩn</a></li>
+                                <li>
+                                    <a href="">Chứng nhận sản phẩm hợp quy </a>
+                                </li>
+                                <li><a href="">Nông nghiệp hữu cơ</a></li>
+                                <li>
+                                    <a href="">VietGap </a>
+                                </li>
+                                <li>
+                                    <a href="">Thử nghiệm Cơ Lý-Hóa Sinh-Pin </a>
+                                </li>
+                                <li>
+                                    <a href=""><p>Kiểm tra thức ăn chăn nuôi nhập khẩu</p></a>
+                                </li>
+                                <li><a href="">Chứng nhận 5S</a></li>
+                                <li><a href="">Giám định</a></li>
+                                <li><a href="">Truy xuất nguồn gốc</a></li>
+                                <li>
+                                    <a href="">ISO 9000 trong CQHC</a>
+                                </li>
+                                <li>
+                                    <a href="">Hỗ trợ văn bản pháp luật liên quan</a>
+                                </li>
+                            </ul>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">Tin tức</a>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">Tuyển dụng</a>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">Mời thầu</a>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">Ngân sách</a>
+                            <hr />
+                        </li>
+                        <li class="header-nav-link-item">
+                            <a href="">Liên hệ</a>
+                            <hr />
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-nav-search-language">
+                    <div class="header-nav-search" id="header-nav-search">
+                        <form action="">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="text"
+                                   name="search"
+                                   placeholder="Nhập để tìm kiếm" />
+                        </form>
+                        <i class="header-nav-search-icon fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <hr />
+                    <div class="header-nav-language">
+                        <div class="header-nav-language-selected">
+                            <p>VI</p>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul class="header-nav-language-box">
+                            <li class="header-nav-language-item">
+                                <a href="">VI</a>
+                            </li>
+                            <li class="header-nav-language-item">
+                                <a href="">EN</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-nav-toggle">
+                    <i class="header-nav-toggle-open active fa-solid fa-bars"></i>
+                    <i class="header-nav-toggle-close fa-solid fa-xmark"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <div class="footer-container container">
+            <div class="footer-main">
+                <div class="footer-main-left">
+                    <div class="footer-main-left-logo">
+                        <img src="~/image/Logo.svg" alt="" />
+                        <h2>QUACERT</h2>
+                    </div>
+                    <p>
+                        <span>Địa chỉ:</span> Số 8 Hoàng Quốc Việt - Cầu Giấy - Hà Nội -
+                        Việt Nam
+                    </p>
+                    <p>
+                        <span>Tel:</span> (84-24) 3756 1025 - <span>Fax:</span> (84-24)
+                        3756 3188
+                    </p>
+                    <p><span>Email:</span> quacert@quacert.gov.vn</p>
+                </div>
+                <div class="footer-main-right">
+                    <h2>Về chúng tôi</h2>
+                    <p>BỘ KHOA HỌC VÀ CÔNG NGHỆ</p>
+                    <p>TỔNG CỤC TIÊU CHUẨN ĐO LƯỜNG CHẤT LƯỢNG</p>
+                    <h3>TRUNG TÂM CHỨNG NHẬN PHÙ HỢP (QUACERT)</h3>
+                    <div class="footer-main-right-social">
+                        <a href="">
+                            <img src="~/image/facebook.svg" alt="" />
+                        </a>
+                        <a href="">
+                            <img src="~/image/phone.svg" alt="" />
+                        </a>
+                        <a href="">
+                            <img src="~/image/instagram.svg" alt="" />
+                        </a>
+                        <a href="">
+                            <img src="~/image/youtube.svg" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <hr />
+                <p>
+                    Ghi rõ nguồn từ <span>“QUACERT”</span> khi phát hành lại thông tin
+                    từ <span>Cổng thông tin điện tử này</span>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - CTV_MODULE_CMS_FRONTEND - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/layout.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

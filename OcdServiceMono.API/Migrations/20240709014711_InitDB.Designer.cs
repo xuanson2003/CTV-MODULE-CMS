@@ -12,7 +12,7 @@ using OcdServiceMono.API.Infrastructure.DbContexts;
 namespace OcdServiceMono.API.Migrations
 {
     [DbContext(typeof(ReadDomainDbContext))]
-    [Migration("20240705092248_InitDB")]
+    [Migration("20240709014711_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
