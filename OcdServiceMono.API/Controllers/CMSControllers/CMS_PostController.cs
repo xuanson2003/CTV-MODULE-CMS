@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System;
 using OcdServiceMono.Lib.Interfaces;
 using OcdServiceMono.API.Models.Entities.CMS;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OcdServiceMono.API.Controllers.CMSControllers
 {
@@ -22,6 +23,39 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             _service = service;
             _logger = logger;
             _userProvider = userProvider;
+        }
+
+        [HttpGet("get-top-post")]
+        [AllowAnonymous]
+        public virtual async Task<IActionResult> GetEntitiesTopPostAsync()
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+            try
+            {
+                var items = await _service.CMS_Post.GetEntitiesTopPostAsync();
+                return ResponseMessage.Success(items);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
+        }
+        [HttpGet("get-news-post")]
+        [AllowAnonymous]
+        public virtual async Task<IActionResult> GetEntitieNewsPostAsync()
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+            try
+            {
+                var items = await _service.CMS_Post.GetEntitiesNewsPostAsync();
+                return ResponseMessage.Success(items);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
         }
     }
 }

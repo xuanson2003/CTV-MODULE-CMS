@@ -1,5 +1,10 @@
-﻿using OcdServiceMono.API.Infrastructure.DbContexts;
+﻿using Microsoft.EntityFrameworkCore;
+using OcdServiceMono.API.Infrastructure.DbContexts;
 using OcdServiceMono.Lib.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
 
 namespace OcdServiceMono.API.Service.CMS.Post
 {
@@ -16,6 +21,21 @@ namespace OcdServiceMono.API.Service.CMS.Post
             _writeDbContext = writeDbContext;
             _dateTimeProvider = dateTimeProvider;
             _userProvider = userService;
+        }
+        public async Task<List<Models.Entities.CMS.CMS_Post>> GetEntitiesTopPostAsync()
+        {
+            return await _readDbContext.CMS_Posts
+                .Where(post => post.IsHot)
+                .OrderByDescending(post => post.View)
+                .Take(4)
+                .ToListAsync();
+        }
+        public async Task<List<Models.Entities.CMS.CMS_Post>> GetEntitiesNewsPostAsync()
+        {
+            return await _readDbContext.CMS_Posts
+            .OrderByDescending(post => post.CreatedBy)
+            .Take(3)
+            .ToListAsync();
         }
     }
 }
