@@ -1,0 +1,201 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <div class="card card-widget ">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h1 style="font-size:23px">
+                                    Sửa bài viết
+                                </h1>
+                            </div><!-- /.col -->
+                            <div class="col-sm">
+                                <ol class="breadcrumb float-right ">
+                                    <li class="breadcrumb-item text-sm "><a href=""> <i class="fas fa-home"></i>   Trang chủ</a></li>
+                                    <li class="breadcrumb-item text-sm "><a href="">Bài viết</a></li>
+                                    <li class="breadcrumb-item text-sm "><a href="">Sửa bài viết</a></li>
+                                </ol>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content-header" style="margin-top:-28px">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <div class="card ">
+                @*  <div class="card-header">
+                <div class="row">
+                <input type="submit" value="Create" class="btn btn-default" />
+                <a href="" class="btn btn-default " style="margin-left:9px">Trở về</a>
+                </div>
+                </div> *@
+
+
+
+                <div class="card-body">
+                    <div class="row">
+                     @*    <div class="col-sm-12 mb-3">
+                            <label class="form-label">Danh mục </label>
+                            <form action="http://httpbin.org/post" method="post">
+                                <div class="input-group ">
+                                    <select data-placeholder="Chọn các danh mục..." multiple class="chosen-select form-control " name="test">
+                                        <option>Danh mục 1</option>
+                                        <option>Danh mục 2</option>
+                                        <option>Danh mục 3</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div> *@
+
+                        <div class="col-sm-12 mb-3">
+                            <label class="form-label">Nhóm tin </label>
+                            <form action="http://httpbin.org/post" method="post">
+                                <div class="input-group ">
+                                    @*   <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                    </div> *@
+                                    <select data-placeholder="Chọn các nhóm tin ..." multiple class="chosen-select form-select " name="test">
+                                        <option>Nhóm tin 1</option>
+                                        <option>Nhóm tin 2</option>
+                                        <option>Nhóm tin 3</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <label class="form-label">Tiêu đề</label>
+                            <div class="input-group  mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="" name="" placeholder="Nhập tiêu đề ..." />
+                            </div>
+                        </div>
+
+
+
+                        @*  <div class="col-sm-12">
+                        <label class="form-label">Ngày xuất bản</label>
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control" id="" name="" />
+                        </div>
+                        </div> *@
+
+                        @*  <div class="col-sm-12">
+                        <label class="form-label">Thẻ</label>
+                        <div class="input-group mb-3">
+                        <select id="tags" name="tags[]" multiple>
+                        <option value="1">Công nghệ</option>
+                        <option value="2">Khoa học</option>
+                        <!-- Các tùy chọn thẻ khác -->
+                        </select>
+                        </div>
+                        </div> *@
+
+                        <div class="col-sm-12">
+                            <label class="form-label">Nguồn</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="" name="" placeholder="Nhập nguồn ..." />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label class="form-label">Avatar</label>
+                            <div class="input-group">
+                                <input name="photo" type="file" id="photo" class="form-control"
+                                       onchange="validate()" accept="image/*" required="true" />
+                            </div>
+                        </div>
+
+                        <div id="" class="form-group col-md-12 d-flex justify-content-center mt-4">
+                            <img id="avatar-input" class="rounded-3 shadow" title="Nhấn để điều chỉnh và cắt ảnh"
+                                 style="object-fit: contain; width: 300px; height: 200px; cursor: pointer" src="data:image/png;base64,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" />
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Mô tả ngắn <span style="color:red">*</span></label>
+                                @*  <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                </div> *@
+                                <textarea class="form-control" id="summernote2" name="" placeholder="" /> </textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Nội dung</label>
+                                <textarea class="form-control" id="summernote" name="" placeholder=""></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 ml-4 mt-1">
+                            <input class="form-check-input" type="checkbox" required="true">
+                            <label class="form-check-label" for="">
+                                Bạn đồng ý để bài viết này làm bài viết nổi bật
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="card-footer ">
+                    <div class="d-flex justify-content-end">
+                        <button id="" class="btn btn-default mr-2 ">Trở về</button>
+                        <button id="btn-register" type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        CKEDITOR.replace("NoiDung")
+
+        function OpenCkfinder() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = SetUrlHinhAnh;
+        }
+
+        function SetUrlHinhAnh(fileUrl) {
+            $('input[NoiDung]').val(fileUrl);
+        }
+
+        $(".chosen-select").chosen({
+            no_results_text: "Oops, nothing found!"
+        })
+    </script>
+}
+
+
+
