@@ -2,11 +2,16 @@
 using OcdServiceMono.Lib.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OcdServiceMono.API.Models.Entities.CMS
 {
-    public class CMS_Post : AuditEntity
+    [Table("CMS_Post")]
+    public class CMS_Posts :AuditEntity
     {
+        //[Key]
+        //public Guid PostId { get; set; }
+
         [StringLength(255)]
         [Comment("Tiêu đề")]
         public string Title { get; set; }
@@ -26,7 +31,7 @@ namespace OcdServiceMono.API.Models.Entities.CMS
         public bool IsHot { get; set; }
 
         [Comment("Nguồn của bài viết")]
-        public int Source { get; set; }
+        public string Source { get; set; }
 
         [Comment("Tình trạng của bài viết (true: Hoạt động, false: Không hoạt động)")]
         public bool IsActive { get; set; }

@@ -11,10 +11,53 @@ namespace OcdServiceMono.API.Service
         public ServiceDecorator(IServiceWrapper repository)
         {
             #region config repository
-            if (typeof(TEntity) == typeof(Models.Entities.CMS.CMS_Post))
+            if (typeof(TEntity) == typeof(Models.Entities.CMS.CMS_Posts))
             {
                 _repositoryBase = (IRepositoryBase<TEntity>)repository.CMS_Post;
             }
+
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_Menu))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_Menu;
+            }
+
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_Permission))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_Permission;
+            }
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_Role))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_Role;
+            }
+
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_Department))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_Department;
+            }
+
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_Accounts))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_Accounts;
+            }
+
+            if (typeof(TEntity) == typeof(Models.Entities.SM.SM_File))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.SM_File;
+            }
+            if (typeof(TEntity) == typeof(Models.Entities.CMS.CMS_Group_News))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.CMS_Group_News;
+            }
+            //if (typeof(TEntity) == typeof(Models.Entities.CMS.CMS_Group_Posts))
+            //{
+            //    _repositoryBase = (IRepositoryBase<TEntity>)repository.CMS_Group_Posts;
+            //}
+
+            if (typeof(TEntity) == typeof(Models.Entities.CMS.CMS_Cer_Content))
+            {
+                _repositoryBase = (IRepositoryBase<TEntity>)repository.CMS_Cer_Content;
+            }
+
 
             #endregion
             if (_repositoryBase == null)

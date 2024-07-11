@@ -1,14 +1,14 @@
-﻿using OcdServiceMono.API.Infrastructure.DbContexts;
+﻿using Microsoft.EntityFrameworkCore;
+using OcdServiceMono.API.Infrastructure.DbContexts;
 using OcdServiceMono.Lib.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
-namespace OcdServiceMono.API.Service.CMS.Post
+namespace OcdServiceMono.API.Service.CMS.CerContent
 {
-    public class Service : RepositoryBase<Models.Entities.CMS.CMS_Posts>, CMS.Post.IService
-    {
+    public class Service : RepositoryBase<Models.Entities.CMS.CMS_Cer_Content>, CMS.CerContent.IService
+    {   
         private readonly ReadDomainDbContext _readDbContext;
         private readonly WriteDomainDbContext _writeDbContext;
         private readonly IDateTimeProvider _dateTimeProvider;
@@ -21,15 +21,15 @@ namespace OcdServiceMono.API.Service.CMS.Post
             _dateTimeProvider = dateTimeProvider;
             _userProvider = userService;
         }
-        public async Task<List<Models.Entities.CMS.CMS_Posts>> GetAllPost()
+        public async Task<List<Models.Entities.CMS.CMS_Cer_Content>> GetAllCerContent()
         {
-            return await _readDbContext.CMS_Posts.ToListAsync();
+            return await _readDbContext.CMS_Cer_Content.ToListAsync();
         }
 
-        public async Task<Models.Entities.CMS.CMS_Posts> CreatePost(Models.Entities.CMS.CMS_Posts model)
+        public async Task<Models.Entities.CMS.CMS_Cer_Content> CreateCerContent(Models.Entities.CMS.CMS_Cer_Content model)
         {
             model.Id = Guid.NewGuid();
-            var result = await _writeDbContext.CMS_Posts.AddAsync(model);
+            var result = await _writeDbContext.CMS_Cer_Content.AddAsync(model);
             await _writeDbContext.SaveChangesAsync();
             return result.Entity;
         }

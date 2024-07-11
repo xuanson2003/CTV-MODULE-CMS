@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using OcdServiceMono.API.Models.Entities.CMS;
+using OcdServiceMono.API.Models.Entities.SM;
 using OcdServiceMono.Lib.Common;
 using OcdServiceMono.Lib.Core;
 using OcdServiceMono.Lib.Helpers;
@@ -71,8 +72,22 @@ namespace OcdServiceMono.API.Infrastructure.DbContexts
         }
 
         #region Dataset
-        public DbSet<CMS_Post> CMS_Posts { get; set; }
+        public DbSet<CMS_Posts> CMS_Posts { get; set; }
+        public DbSet<SM_Menu> SM_Menu { get; set; }
 
+        public DbSet<SM_Permission> SM_Permission { get; set; }
+
+        public DbSet<SM_Role> SM_Role { get; set; }
+
+        public DbSet<SM_Department> SM_Department { get; set; }
+        public DbSet<SM_Accounts> SM_Accounts { get; set; }
+
+        public DbSet<SM_File> SM_File { get; set; }
+        public DbSet<CMS_Group_News> CMS_Group_News { get; set; }
+
+        public DbSet<CMS_Group_Posts> CMS_Group_Posts { get; set; }
+
+        public DbSet<CMS_Cer_Content> CMS_Cer_Content { get; set; }
         #endregion
     }
 }

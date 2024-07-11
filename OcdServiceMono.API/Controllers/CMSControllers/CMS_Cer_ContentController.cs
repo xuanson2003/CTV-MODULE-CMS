@@ -13,25 +13,26 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OcdServiceMono.API.Controllers.CMSControllers
 {
-    public class CMS_PostController : ApiControllerBase<CMS_Posts>
+    public class CMS_Cer_ContentController : ApiControllerBase<CMS_Cer_Content>
     {
         private readonly IUserProvider _userProvider;
         private readonly IServiceWrapper _service;
-        private readonly ILogger<CMS_PostController> _logger;
-        public CMS_PostController(IServiceWrapper service, ILogger<CMS_PostController> logger, IUserProvider userProvider) : base(service, logger, userProvider)
+        private readonly ILogger<CMS_Cer_ContentController> _logger;
+        public CMS_Cer_ContentController(IServiceWrapper service, ILogger<CMS_Cer_ContentController> logger, IUserProvider userProvider) : base(service, logger, userProvider)
         {
             _service = service;
             _logger = logger;
             _userProvider = userProvider;
         }
-        [HttpGet("get-cms-post")]
+
+        [HttpGet("get-cms-cer-content")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetCMSPostAsync()
+        public async Task<IActionResult> GetCMSCerContentAsync()
         {
             _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
             try
             {
-                var items = await _service.CMS_Post.GetAllPost();
+                var items = await _service.CMS_Cer_Content.GetAllCerContent();
                 return ResponseMessage.Success(items);
             }
             catch (Exception ex)
@@ -44,12 +45,12 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
 
         [HttpPost("add")]
         [AllowAnonymous]
-        public async Task<IActionResult> CreateCMSPostAsync([FromBody] CMS_Posts model)
+        public async Task<IActionResult> CreateCMSCerContentAsync([FromBody] CMS_Cer_Content model)
         {
             _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
             try
             {
-                var item = await _service.CMS_Post.CreatePost(model);
+                var item = await _service.CMS_Cer_Content.CreateCerContent(model);
                 return ResponseMessage.Success(item);
             }
             catch (Exception ex)

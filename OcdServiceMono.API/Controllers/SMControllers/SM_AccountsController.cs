@@ -10,28 +10,30 @@ using System;
 using OcdServiceMono.Lib.Interfaces;
 using OcdServiceMono.API.Models.Entities.CMS;
 using Microsoft.AspNetCore.Authorization;
+using OcdServiceMono.API.Models.Entities.SM;
 
 namespace OcdServiceMono.API.Controllers.CMSControllers
 {
-    public class CMS_PostController : ApiControllerBase<CMS_Posts>
+    public class SM_AccountsController : ApiControllerBase<SM_Accounts>
     {
         private readonly IUserProvider _userProvider;
         private readonly IServiceWrapper _service;
-        private readonly ILogger<CMS_PostController> _logger;
-        public CMS_PostController(IServiceWrapper service, ILogger<CMS_PostController> logger, IUserProvider userProvider) : base(service, logger, userProvider)
+        private readonly ILogger<SM_AccountsController> _logger;
+        public SM_AccountsController(IServiceWrapper service, ILogger<SM_AccountsController> logger, IUserProvider userProvider) : base(service, logger, userProvider)
         {
             _service = service;
             _logger = logger;
             _userProvider = userProvider;
         }
-        [HttpGet("get-cms-post")]
+
+        [HttpGet("get-sm-acc")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetCMSPostAsync()
+        public async Task<IActionResult> GetSmMenuAsync()
         {
             _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
             try
             {
-                var items = await _service.CMS_Post.GetAllPost();
+                var items = await _service.SM_Accounts.GetAllMenu();
                 return ResponseMessage.Success(items);
             }
             catch (Exception ex)
@@ -41,15 +43,14 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             }
         }
 
-
-        [HttpPost("add")]
+        [HttpPost("Add")]
         [AllowAnonymous]
-        public async Task<IActionResult> CreateCMSPostAsync([FromBody] CMS_Posts model)
+        public async Task<IActionResult> CreateSMAccountsAsync([FromBody] SM_Accounts model)
         {
             _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
             try
             {
-                var item = await _service.CMS_Post.CreatePost(model);
+                var item = await _service.SM_Accounts.CreateAcc(model);
                 return ResponseMessage.Success(item);
             }
             catch (Exception ex)

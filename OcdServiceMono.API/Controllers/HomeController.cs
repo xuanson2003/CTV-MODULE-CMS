@@ -40,17 +40,17 @@ namespace OcdServiceMono.API.Controllers
         {
             return Content("Ok i'm fine, kin cha na, kin cha na, teng téng teng tèng");
         }
-        [HttpPost("/send-message")]
-        public async Task<IActionResult> SendMessage(string message)
-        {
-            await _publishEndpoint.Publish(new SimpleMessage { Text = message });
-            return Ok($"Sent: {message}");
-        }
-        [HttpPost("/send-message-direct")]
-        public async Task<IActionResult> SendMessageDirect(string type, string message)
-        {
-            await _publishEndpoint.Publish(new SimpleMessage_Direct { Type = type, Text = message });
-            return Ok($"Sent: {message}");
-        }
+        //[HttpPost("/send-message")]
+        //public async Task<IActionResult> SendMessage(string message)
+        //{
+        //    await _publishEndpoint.Publish(new SimpleMessage { Text = message });
+        //    return Ok($"Sent: {message}");
+        //}
+        //[HttpPost("/send-message-direct")]
+        //public async Task<IActionResult> SendMessageDirect(string type, string message)
+        //{
+        //    await _publishEndpoint.Publish(new SimpleMessage_Direct { Type = type, Text = message });
+        //    return Ok($"Sent: {message}");
+        //}
     }
 }
