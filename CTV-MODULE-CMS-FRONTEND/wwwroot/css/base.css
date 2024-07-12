@@ -47,23 +47,12 @@ p {
 }
 
 .btn-cms {
-  padding: 12px 20px 12px 28px;
-  min-width: 254px;
-  border-radius: 60px;
-  border: 2px solid var(--text-color-primary);
-  color: var(--text-color-primary);
-  background-color: var(--white-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-  font-weight: 600;
-  gap: 16px;
-  transition: 0.2s ease-in-out;
-}
-.btn-cms:hover {
-  background-color: var(--text-color-primary);
-  color: var(--white-color);
+    font-size: 1.5rem;
+    color: var(--white-color);
+    padding: 10px 16px;
+    min-width: 124px;
+    background-color: var(--text-color-primary);
+    border-radius: 12px;
 }
 
 /* scroll bar */

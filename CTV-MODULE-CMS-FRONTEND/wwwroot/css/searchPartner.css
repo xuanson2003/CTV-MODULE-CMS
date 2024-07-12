@@ -1,0 +1,127 @@
+﻿.banner {
+    margin-top: var(--header-height);
+    width: 100%;
+}
+
+    .banner img {
+        width: 100%;
+    }
+
+.search-form {
+    background-color: var(--background-color-1);
+    padding: 44px 0;
+}
+
+.search-form-container form {
+    background-color: var(--text-color-1);
+    border-radius: 4px;
+    padding: 12px 12px;
+}
+
+.form-control {
+    height: 100%;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+    padding-left: 12px;
+}
+
+.search-form-container form button {
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn-cms i {
+    margin-right: 8px;
+}
+/* Search result ============================== */
+.search-result {
+    background-color: var(--white-color);
+    padding: 28px 0 12px;
+    text-align: center;
+}
+
+.search-result-container {
+}
+
+.search-result-title {
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .search-result-title p {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: var(--text-color);
+        font-weight: 400;
+    }
+
+    .search-result-title span {
+        font-weight: 700;
+        color: var(--text-color-primary);
+    }
+
+.search-result-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .search-result-filter p {
+        white-space: nowrap;
+        font-weight: 700;
+        color: var(--text-color-primary);
+    }
+
+.search-result-main table {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+}
+
+/* Table ================= */
+.table th,
+.table td {
+    white-space: nowrap;
+}
+
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+        flex: 0 0 10%;
+    }
+
+    .table th:nth-child(2),
+    .table td:nth-child(2),
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        flex: 1 1 45%;
+    }
+
+.table thead th {
+    text-align: center;
+}
+
+.table tbody td:nth-child(2),
+.table tbody td:nth-child(3) {
+    text-align: left;
+}
+
+/* pagination ========================= */
+.pagination {
+    margin-bottom: 12px;
+    padding-left: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+
+    .page-item a {
+        font-size: 1.6rem;
+    }
