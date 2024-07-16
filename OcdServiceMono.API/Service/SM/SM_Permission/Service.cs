@@ -35,5 +35,21 @@ namespace OcdServiceMono.API.Service.SM.Permission
             await _writeDbContext.SaveChangesAsync();
             return result.Entity;
         }
+
+        public async Task<Models.Entities.SM.SM_Permission> UpdatePermission(Guid id, Models.Entities.SM.SM_Permission updatedModel)
+        {
+            var Permission = await _writeDbContext.SM_Permission.FindAsync(id);
+            if (Permission == null)
+            {               
+                throw new KeyNotFoundException("Permission not found");
+            }
+            Permission.Name = updatedModel.Name;
+            Permission.Descible = updatedModel.Descible;
+            Permission.CreatedAt = updatedModel.CreatedAt;
+            Permission.UpdateAt = updatedModel.UpdateAt;
+
+            await _writeDbContext.SaveChangesAsync();
+            return Permission;
+        }
     }
 }

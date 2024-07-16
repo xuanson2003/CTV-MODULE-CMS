@@ -21,9 +21,10 @@ namespace OcdServiceMono.API.Migrations
                     order = table.Column<int>(type: "integer", nullable: false),
                     active = table.Column<bool>(type: "boolean", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -38,14 +39,15 @@ namespace OcdServiceMono.API.Migrations
                     name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     url = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     descible = table.Column<string>(type: "text", nullable: true),
-                    parent_id = table.Column<int>(type: "integer", maxLength: 15, nullable: true),
+                    parent_id = table.Column<Guid>(type: "uuid", nullable: true),
                     create_by = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     create_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     order = table.Column<int>(type: "integer", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -67,9 +69,10 @@ namespace OcdServiceMono.API.Migrations
                     avatar = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true, comment: "Đường dẫn ảnh đại diện"),
                     status = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true, comment: "Trạng thái của tin bài (da_duyet: Đã duyệt, chua_duyet: Chưa duyệt, ...)"),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -83,9 +86,10 @@ namespace OcdServiceMono.API.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     department_name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -106,9 +110,10 @@ namespace OcdServiceMono.API.Migrations
                     active = table.Column<bool>(type: "boolean", nullable: false),
                     sm_menu_id = table.Column<Guid>(type: "uuid", nullable: true),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -130,9 +135,10 @@ namespace OcdServiceMono.API.Migrations
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     update_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -150,9 +156,10 @@ namespace OcdServiceMono.API.Migrations
                     update_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     active = table.Column<bool>(type: "boolean", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -199,9 +206,10 @@ namespace OcdServiceMono.API.Migrations
                     ContentId = table.Column<Guid>(name: "ContentId ", type: "uuid", nullable: false),
                     PostId = table.Column<Guid>(name: "PostId ", type: "uuid", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {
@@ -239,9 +247,10 @@ namespace OcdServiceMono.API.Migrations
                     DepartmentId = table.Column<Guid>(name: "DepartmentId ", type: "uuid", nullable: false),
                     RoleId = table.Column<Guid>(name: "RoleId ", type: "uuid", nullable: false),
                     created_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản khởi tạo"),
-                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, comment: "Ngày khởi tạo"),
+                    created_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày khởi tạo"),
                     updated_by = table.Column<string>(type: "character varying(55)", maxLength: 55, nullable: true, comment: "Tài khoản cập nhập lần cuối"),
-                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối")
+                    updated_date_time = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày cập nhập lần cuối"),
+                    delete_at = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true, comment: "Ngày xóa lần cuối")
                 },
                 constraints: table =>
                 {

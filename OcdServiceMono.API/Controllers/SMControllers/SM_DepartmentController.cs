@@ -26,14 +26,14 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             _userProvider = userProvider;
         }
 
-        [HttpGet("get-sm-department")]
+        [HttpGet("Get-SM-Department")]
         [AllowAnonymous]
         public async Task<IActionResult> GetSmMenuAsync()
         {
             _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
             try
             {
-                var items = await _service.SM_Department.GetAllMenu();
+                var items = await _service.SM_Department.GetAllDepartment();
                 return ResponseMessage.Success(items);
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             }
         }
 
-        [HttpPost("add")]
+        [HttpPost("Add")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateSMDepartmentAsync([FromBody] SM_Department model)
         {
@@ -52,6 +52,35 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             {
                 var item = await _service.SM_Department.CreateDepartment(model);
                 return ResponseMessage.Success(item);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateSMDepartmentAsync([FromBody] SM_Department model)
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+
+            try
+            {
+
+                if (model.Id.ToString() == "")
+                {
+                    return BadRequest("Missing Department item identifier");
+                }
+
+                var updatedItem = await _service.SM_Department.UpdateDepartment(model.Id, model);
+
+                if (updatedItem == null)
+                {
+                    return ResponseMessage.Error("Department item not found");
+                }
+
+                return ResponseMessage.Success(updatedItem);
             }
             catch (Exception ex)
             {

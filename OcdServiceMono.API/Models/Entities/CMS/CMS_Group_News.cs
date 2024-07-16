@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OcdServiceMono.Lib.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace OcdServiceMono.API.Models.Entities.CMS
 {
@@ -19,10 +21,8 @@ namespace OcdServiceMono.API.Models.Entities.CMS
         [MaxLength(255)]
         public string Url { get; set; }
       
-        public string Descible { get; set; }
-
-        [MaxLength(15)]
-        public int? ParentId { get; set; }
+        public string Descible { get; set; }    
+        public Guid? ParentId { get; set; }
 
         [MaxLength(255)]
         public string CreateBy { get; set; }
@@ -30,6 +30,9 @@ namespace OcdServiceMono.API.Models.Entities.CMS
         public DateTime CreateAt { get; set; }
 
         public int Order { get; set; }
+        [JsonIgnore]
+        public IEnumerable<CMS_Posts> TopPosts { get; set; }
        
+
     }
 }

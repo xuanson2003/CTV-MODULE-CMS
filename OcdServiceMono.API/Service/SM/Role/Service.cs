@@ -35,5 +35,23 @@ namespace OcdServiceMono.API.Service.SM.Role
             await _writeDbContext.SaveChangesAsync();
             return result.Entity;
         }
+
+        // update
+        public async Task<Models.Entities.SM.SM_Role> UpdateRole(Guid id, Models.Entities.SM.SM_Role updatedModel)
+        {
+            var Role = await _writeDbContext.SM_Role.FindAsync(id);
+            if (Role == null)
+            {
+                throw new KeyNotFoundException("Role not found");
+            }
+            Role.RoleName = updatedModel.RoleName;
+            Role.Descible = updatedModel.Descible;
+            Role.CreatedAt = updatedModel.CreatedAt;           
+            Role.UpdateAt = updatedModel.UpdateAt;
+            Role.Active = updatedModel.Active;
+
+            await _writeDbContext.SaveChangesAsync();
+            return Role;
+        }
     }
 }

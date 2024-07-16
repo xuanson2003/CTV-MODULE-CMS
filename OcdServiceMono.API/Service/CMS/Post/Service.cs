@@ -38,7 +38,7 @@ namespace OcdServiceMono.API.Service.CMS.Post
             await _writeDbContext.SaveChangesAsync();
             return result.Entity;
         }
-        public async Task<List<Models.Entities.CMS.CMS_Post>> GetEntitiesTopPostAsync()
+        public async Task<List<Models.Entities.CMS.CMS_Posts>> GetEntitiesTopPostAsync()
         {
             return await _readDbContext.CMS_Posts
                 .Where(post => post.IsHot)
@@ -46,12 +46,39 @@ namespace OcdServiceMono.API.Service.CMS.Post
                 .Take(4)
                 .ToListAsync();
         }
-        public async Task<List<Models.Entities.CMS.CMS_Post>> GetEntitiesNewsPostAsync()
+        public async Task<List<Models.Entities.CMS.CMS_Posts>> GetEntitiesNewsPostAsync()
         {
             return await _readDbContext.CMS_Posts
             .OrderByDescending(post => post.CreatedBy)
             .Take(3)
             .ToListAsync();
+        }
+
+        // update
+        public async Task<Models.Entities.CMS.CMS_Posts> UpdatePost(Guid id, Models.Entities.CMS.CMS_Posts updatedModel)
+        {
+            var Posts = await _writeDbContext.CMS_Posts.FindAsync(id);
+            if (Posts == null)
+            {
+
+                throw new KeyNotFoundException("Posts not found");
+            }
+            Posts.Title = updatedModel.Title;
+            Posts.Desc = updatedModel.Desc;
+            Posts.Content = updatedModel.Content;
+            Posts.Avatar = updatedModel.Avatar;
+            Posts.View = updatedModel.View;
+            Posts.IsHot = updatedModel.IsHot;
+            Posts.Source = updatedModel.Source;
+            Posts.IsActive = updatedModel.IsActive;
+            Posts.Avatar = updatedModel.Avatar;
+            Posts.Status = updatedModel.Status;
+          
+
+            // update khóa ngoại 
+
+            await _writeDbContext.SaveChangesAsync();
+            return Posts;
         }
     }
 }

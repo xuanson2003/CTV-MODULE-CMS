@@ -25,7 +25,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             _userProvider = userProvider;
         }
 
-        [HttpGet("get-cms-groupnew")]
+        [HttpGet("Get-CMS-Groupnew")]
         [AllowAnonymous]
         public async Task<IActionResult> GetCMSGroupNewsAsync()
         {
@@ -38,12 +38,28 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
-                return ResponseMessage.Error(ex.Message);
+                return ResponseMessage.Error(ex.ToString());
             }
         }
 
+        [HttpGet("Get-CMS-Top6Posts")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetTopGroupNewsAsync()
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+            try
+            {
+                var items = await _service.CMS_Group_News.GetTopGroupNewsAsync();
+                return ResponseMessage.Success(items);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.ToString());
+            }
+        }
 
-        [HttpPost("add")]
+        [HttpPost("Add")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateCMSGroupNewAsync([FromBody] CMS_Group_News model)
         {
@@ -52,6 +68,35 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             {
                 var item = await _service.CMS_Group_News.CreateGroupNews(model);
                 return ResponseMessage.Success(item);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateCMSGroupNewAsync([FromBody] CMS_Group_News model)
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+
+            try
+            {
+
+                if (model.Id.ToString() == "")
+                {
+                    return BadRequest("Missing Group News item identifier");
+                }
+
+                var updatedItem = await _service.CMS_Group_News.UpdateGroupNews(model.Id, model);
+
+                if (updatedItem == null)
+                {
+                    return ResponseMessage.Error("Group News item not found");
+                }
+
+                return ResponseMessage.Success(updatedItem);
             }
             catch (Exception ex)
             {

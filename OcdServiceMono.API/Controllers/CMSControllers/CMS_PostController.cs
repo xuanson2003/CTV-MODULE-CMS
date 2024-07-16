@@ -11,6 +11,7 @@ using OcdServiceMono.Lib.Interfaces;
 using OcdServiceMono.API.Models.Entities.CMS;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using OcdServiceMono.API.Models.Entities.SM;
 
 namespace OcdServiceMono.API.Controllers.CMSControllers
 {
@@ -26,7 +27,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             _userProvider = userProvider;
         }
 
-        [HttpGet("get-top-post")]
+        [HttpGet("Get-Top-Post")]
         [AllowAnonymous]
         public virtual async Task<IActionResult> GetEntitiesTopPostAsync()
         {
@@ -42,7 +43,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
                 return ResponseMessage.Error(ex.Message);
             }
         }
-        [HttpGet("get-news-post")]
+        [HttpGet("Get-News-Post")]
         [AllowAnonymous]
         public virtual async Task<IActionResult> GetEntitieNewsPostAsync()
         {
@@ -58,7 +59,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
                 return ResponseMessage.Error(ex.Message);
             }
         }
-        [HttpGet("get-cms-post")]
+        [HttpGet("Get-CMS-Post")]
         [AllowAnonymous]
         public async Task<IActionResult> GetCMSPostAsync()
         {
@@ -76,7 +77,7 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
         }
 
 
-        [HttpPost("add")]
+        [HttpPost("Add")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateCMSPostAsync([FromBody] CMS_Posts model)
         {
@@ -85,6 +86,35 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
             {
                 var item = await _service.CMS_Post.CreatePost(model);
                 return ResponseMessage.Success(item);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateCMSPostAsync([FromBody] CMS_Posts model)
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+
+            try
+            {
+
+                if (model.Id.ToString() == "")
+                {
+                    return BadRequest("Missing Posts item identifier");
+                }
+
+                var updatedItem = await _service.CMS_Post.UpdatePost(model.Id, model);
+
+                if (updatedItem == null)
+                {
+                    return ResponseMessage.Error("Posts item not found");
+                }
+
+                return ResponseMessage.Success(updatedItem);
             }
             catch (Exception ex)
             {

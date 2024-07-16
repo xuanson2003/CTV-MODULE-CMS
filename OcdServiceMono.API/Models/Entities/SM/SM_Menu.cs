@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using OcdServiceMono.Lib.Models;
 using System.Collections.Generic;
 using System;
+using System.Text.Json.Serialization;
 
 namespace OcdServiceMono.API.Models.Entities.SM
 {
@@ -31,6 +32,8 @@ namespace OcdServiceMono.API.Models.Entities.SM
         public bool Active { get; set; }
 
         // Navigation property for child menus
+        [JsonIgnore]
         public virtual ICollection<SM_Menu> ChildMenus { get; set; } = new List<SM_Menu>();
+        
     }
 }

@@ -23,7 +23,7 @@ namespace OcdServiceMono.API.Service.SM.Department
             _userProvider = userService;
         }
 
-        public async Task<List<Models.Entities.SM.SM_Department>> GetAllMenu()
+        public async Task<List<Models.Entities.SM.SM_Department>> GetAllDepartment()
         {
             return await _readDbContext.SM_Department.ToListAsync();
         }
@@ -33,6 +33,19 @@ namespace OcdServiceMono.API.Service.SM.Department
             var result = await _writeDbContext.SM_Department.AddAsync(model);
             await _writeDbContext.SaveChangesAsync();
             return result.Entity;
+        }
+
+        // update
+        public async Task<Models.Entities.SM.SM_Department> UpdateDepartment(Guid id, Models.Entities.SM.SM_Department updatedModel)
+        {
+            var existingde = await _writeDbContext.SM_Department.FindAsync(id);
+            if (existingde == null)
+            {
+                throw new KeyNotFoundException("Department not found");
+            }
+            existingde.DepartmentName = updatedModel.DepartmentName;
+            await _writeDbContext.SaveChangesAsync();
+            return existingde;
         }
     }
 }

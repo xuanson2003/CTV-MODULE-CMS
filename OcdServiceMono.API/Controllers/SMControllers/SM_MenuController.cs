@@ -61,5 +61,57 @@ namespace OcdServiceMono.API.Controllers.CMSControllers
                 return ResponseMessage.Error(ex.Message);
             }
         }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateSmMenuAsync([FromBody] SM_Menu model)
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+
+            try
+            {
+                // Validate if the model contains an identifier (e.g., Id) for the menu item to update
+                if (model.Id.ToString() == "" ) // Modify this check based on your identifier property
+                {
+                    return BadRequest("Missing menu item identifier");
+                }
+
+                var updatedItem = await _service.SM_Menu.UpdateMenu(model.Id ,model);
+
+                if (updatedItem == null)
+                {
+                    return ResponseMessage.Error("Menu item not found");
+                }
+
+                return ResponseMessage.Success(updatedItem);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message); // Internal Server Error
+            }
+        }
+
+        [HttpDelete("delete/{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> DeleteSmMenuAsync(Guid id)
+        {
+            _logger.LogInformation($"Start {MethodBase.GetCurrentMethod()?.Name}");
+            try
+            {
+                var item = await _service.SM_Menu.DeleteMenu(id);
+                if (item == null)
+                {
+                    return ResponseMessage.Error("Menu not found or already deleted.");
+                }
+                return ResponseMessage.Success(null);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{MethodBase.GetCurrentMethod()?.Name} error: {ex.Message}");
+                return ResponseMessage.Error(ex.Message);
+            }
+        }
+
+
     }
 }

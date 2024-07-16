@@ -26,7 +26,7 @@ namespace OcdServiceMono.Lib.Models
 
         [Comment("Ngày khởi tạo")]
         [JsonIgnore]
-        public DateTimeOffset CreatedDateTime { get; set; }
+        public DateTimeOffset? CreatedDateTime { get; set; }
 
         [StringLength(55)]
         [Comment("Tài khoản cập nhập lần cuối")]
@@ -36,5 +36,9 @@ namespace OcdServiceMono.Lib.Models
         [Comment("Ngày cập nhập lần cuối")]
         [JsonIgnore]
         public DateTimeOffset? UpdatedDateTime { get; set; }
+
+        [Comment("Ngày xóa lần cuối")]
+        [JsonIgnore]
+        public DateTimeOffset? DeleteAt { get; set; }
     }
 }

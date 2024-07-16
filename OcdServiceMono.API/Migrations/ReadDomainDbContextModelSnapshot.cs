@@ -44,10 +44,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -98,10 +103,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Descible")
                         .HasColumnType("text")
@@ -117,9 +127,8 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("order");
 
-                    b.Property<int?>("ParentId")
-                        .HasMaxLength(15)
-                        .HasColumnType("integer")
+                    b.Property<Guid?>("ParentId")
+                        .HasColumnType("uuid")
                         .HasColumnName("parent_id");
 
                     b.Property<string>("UpdatedBy")
@@ -189,10 +198,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Desc")
                         .HasMaxLength(500)
@@ -284,10 +298,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uuid")
@@ -359,10 +378,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("DepartmentName")
                         .IsRequired()
@@ -412,10 +436,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Extention")
                         .HasMaxLength(20)
@@ -481,10 +510,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Icon")
                         .HasMaxLength(100)
@@ -555,10 +589,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Descible")
                         .HasMaxLength(255)
@@ -613,10 +652,15 @@ namespace OcdServiceMono.API.Migrations
                         .HasColumnName("created_by")
                         .HasComment("Tài khoản khởi tạo");
 
-                    b.Property<DateTimeOffset>("CreatedDateTime")
+                    b.Property<DateTimeOffset?>("CreatedDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date_time")
                         .HasComment("Ngày khởi tạo");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("delete_at")
+                        .HasComment("Ngày xóa lần cuối");
 
                     b.Property<string>("Descible")
                         .HasColumnType("text")
